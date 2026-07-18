@@ -95,7 +95,7 @@ function CaseStudy() {
             <div>
               <SectionTitle>Project goals</SectionTitle>
               <ul className="mt-5 space-y-3">
-                {project.goals.map((g, i) => (
+                {project.goals.map((g: string, i: number) => (
                   <li key={i} className="flex gap-3 text-charcoal/85">
                     <span className="pixel-num text-sm mt-1">·0{i + 1}</span>
                     <span>{g}</span>
