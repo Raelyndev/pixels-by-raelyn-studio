@@ -268,7 +268,7 @@ function CaseStudy() {
           <div className="max-w-2xl">
             <span className="eyebrow">Key features</span>
             <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
-              What the site does
+              Deliverables and highlights
             </h2>
           </div>
 
@@ -289,6 +289,29 @@ function CaseStudy() {
         </div>
       </section>
 
+      {/* 8b. Verified metrics (only when supplied) */}
+      {project.metrics && project.metrics.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
+          <div className="max-w-2xl">
+            <span className="eyebrow">Measurable results</span>
+            <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
+              What has been recorded so far
+            </h2>
+          </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+            {project.metrics.map((m, i) => (
+              <li
+                key={i}
+                className="border border-border bg-card p-6 flex gap-4"
+              >
+                <span className="pixel-num text-xs text-camel mt-1 shrink-0">·{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-charcoal/85 leading-relaxed">{m}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* 9. Outcome */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28 text-center">
         <span className="eyebrow">Outcome</span>
@@ -308,6 +331,30 @@ function CaseStudy() {
           </a>
         )}
       </section>
+
+      {/* 9b. Skills demonstrated */}
+      {project.skills && project.skills.length > 0 && (
+        <section className="bg-cream border-y border-border">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
+            <div className="max-w-2xl">
+              <span className="eyebrow">Skills demonstrated</span>
+              <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
+                What this project shows I can do
+              </h2>
+            </div>
+            <ul className="mt-8 flex flex-wrap gap-2.5">
+              {project.skills.map((s) => (
+                <li
+                  key={s}
+                  className="px-4 py-2 border border-border text-sm text-charcoal/85 bg-card"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* 10. Next project */}
       <section className="relative bg-olive text-cream border-y border-olive">
