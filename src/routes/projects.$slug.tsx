@@ -129,7 +129,7 @@ function CaseStudy() {
               <Prose className="mt-3">{project.clientNeeded}</Prose>
             </div>
             <div>
-              <h3 className="eyebrow-olive">Raelyn's role</h3>
+              <h3 className="eyebrow-olive">My role</h3>
               <Prose className="mt-3">{project.role}</Prose>
             </div>
           </div>
