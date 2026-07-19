@@ -175,9 +175,11 @@ function CaseStudy() {
               How I contributed
             </h2>
           </div>
-          <p className="text-sm text-charcoal/70 max-w-sm">
-            Scope varies by project — this is what was delivered here.
-          </p>
+          {project.servicesIntro && (
+            <p className="text-sm text-charcoal/70 max-w-sm">
+              {project.servicesIntro}
+            </p>
+          )}
         </div>
         <ul className="flex flex-wrap gap-2.5">
           {project.services.map((s) => (
@@ -189,6 +191,23 @@ function CaseStudy() {
             </li>
           ))}
         </ul>
+
+        {project.scope && project.scope.length > 0 && (
+          <div className="mt-14">
+            <span className="eyebrow">Project scope</span>
+            <h3 className="mt-3 text-2xl md:text-3xl text-olive leading-tight">
+              What was included
+            </h3>
+            <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+              {project.scope.map((s, i) => (
+                <li key={i} className="flex gap-3 text-sm text-charcoal/85 leading-relaxed">
+                  <span className="pixel-num text-xs text-camel mt-1 shrink-0">·{String(i + 1).padStart(2, "0")}</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
 
       {/* 6. Process */}
@@ -197,23 +216,26 @@ function CaseStudy() {
           <div className="max-w-2xl">
             <span className="eyebrow">Process</span>
             <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
-              Design & development process
+              Design and development process
             </h2>
-            <p className="mt-4 text-charcoal/85">
-              Each engagement follows the stages that fit the work — nothing is added for the sake of it.
-            </p>
+            {project.processIntro && (
+              <p className="mt-4 text-charcoal/85">{project.processIntro}</p>
+            )}
           </div>
 
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {project.process.map((stage, i) => (
               <li
-                key={stage}
+                key={stage.name}
                 className="group relative border border-border bg-card p-6 transition-colors hover:border-camel"
               >
-                <span className="pixel-num text-xs text-camel">·0{i + 1}</span>
+                <span className="pixel-num text-xs text-camel">·{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-2 text-xl text-olive group-hover:text-camel transition-colors">
-                  {stage}
+                  {stage.name}
                 </h3>
+                <p className="mt-3 text-sm text-charcoal/80 leading-relaxed">
+                  {stage.description}
+                </p>
                 <span className="absolute right-6 top-6 h-2 w-2" style={{ background: "var(--color-camel)" }} />
               </li>
             ))}
