@@ -4,6 +4,10 @@
 
 export type Category = "Websites" | "Branding" | "Social Media" | "Strategy";
 
+import vipBarberLogo from "@/assets/logos/vip-barber-lounge.jpg.asset.json";
+import rootedLabLogo from "@/assets/logos/rooted-lab-co.png.asset.json";
+import kimballRidgeLogo from "@/assets/logos/kimball-ridge.png.asset.json";
+
 export interface Project {
   slug: string;
   name: string;
@@ -12,6 +16,7 @@ export interface Project {
   services: string[];
   summary: string;
   imageAlt: string;
+  logo?: { url: string; bg?: string };
   // Case study fields
   clientOverview: string;
   challenge: string;
@@ -31,12 +36,13 @@ export const projects: Project[] = [
   {
     slug: "the-perfect-part-comb",
     name: "The Perfect Part® Comb",
-    industry: "Beauty & Grooming Product",
+    industry: "Beauty & Grooming Product — by Rooted Lab & Co",
     categories: ["Websites", "Branding", "Social Media"],
     services: ["Website Design", "Brand Support", "Social Media Content"],
     summary:
-      "Digital presence and creative support for a purpose-built grooming tool with a growing customer base.",
-    imageAlt: "Placeholder image for The Perfect Part® Comb project",
+      "Digital presence and creative support for a purpose-built grooming tool by Rooted Lab & Co, with a growing customer base.",
+    imageAlt: "Rooted Lab & Co logo — parent brand of The Perfect Part® Comb",
+    logo: { url: rootedLabLogo.url, bg: "#F5F3EA" },
     clientOverview: placeholder,
     challenge: placeholder,
     goals: [placeholder, placeholder, placeholder],
@@ -50,13 +56,14 @@ export const projects: Project[] = [
   },
   {
     slug: "more-than-a-barber-podcast",
-    name: "More Than a Barber Podcast",
+    name: "VIP Barber Lounge x More Than A Barber Podcast",
     industry: "Podcast & Community",
     categories: ["Branding", "Social Media", "Strategy"],
     services: ["Brand Support", "Social Media Content", "Digital Strategy"],
     summary:
-      "Branded content, episode graphics, and platform support for a conversation-driven podcast.",
-    imageAlt: "Placeholder image for More Than a Barber Podcast project",
+      "Branded content, episode graphics, and platform support for a conversation-driven podcast presented by VIP Barber Lounge.",
+    imageAlt: "VIP Barber Lounge logo",
+    logo: { url: vipBarberLogo.url, bg: "#0A0A0A" },
     clientOverview: placeholder,
     challenge: placeholder,
     goals: [placeholder, placeholder, placeholder],
@@ -96,7 +103,8 @@ export const projects: Project[] = [
     services: ["Website Design", "Brand Support"],
     summary:
       "A refined, trustworthy website presence for a client-focused advisory practice.",
-    imageAlt: "Placeholder image for Kimball Ridge Advisory Services project",
+    imageAlt: "Kimball Ridge Advisory Services logo",
+    logo: { url: kimballRidgeLogo.url, bg: "#F5F3EA" },
     clientOverview: placeholder,
     challenge: placeholder,
     goals: [placeholder, placeholder, placeholder],

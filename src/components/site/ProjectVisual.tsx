@@ -30,6 +30,28 @@ export function ProjectVisual({
     .map((w) => w[0])
     .join("");
 
+  if (project.logo) {
+    return (
+      <div className={`relative w-full ${aspect} overflow-hidden`} role="img" aria-label={project.imageAlt}>
+        <div className="absolute inset-0" style={{ background: project.logo.bg ?? p.bg }} />
+        <div className="absolute inset-0 flex items-center justify-center p-8 sm:p-12">
+          <img
+            src={project.logo.url}
+            alt={project.imageAlt}
+            className="max-h-full max-w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+        <div className="absolute top-4 left-4 flex gap-1">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="h-1.5 w-1.5" style={{ background: p.accent }} />
+          ))}
+        </div>
+        <div className="absolute left-6 bottom-6 h-1 w-16" style={{ background: p.accent }} />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative w-full ${aspect} overflow-hidden`} role="img" aria-label={project.imageAlt}>
       <div className="absolute inset-0" style={{ background: p.bg }} />
