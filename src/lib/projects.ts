@@ -78,7 +78,7 @@ export const projects: Project[] = [
   },
   {
     slug: "rising-builders",
-    name: "Rising Builders",
+    name: "Rising Builders Foundation Inc.",
     industry: "Community Organization",
     categories: ["Websites", "Branding", "Strategy"],
     services: ["Website Design", "Brand Support", "Digital Strategy"],
