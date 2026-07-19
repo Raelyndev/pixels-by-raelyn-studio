@@ -78,13 +78,14 @@ export const projects: Project[] = [
   },
   {
     slug: "rising-builders",
-    name: "Rising Builders",
+    name: "Rising Builders Foundation Inc.",
     industry: "Community Organization",
     categories: ["Websites", "Branding", "Strategy"],
     services: ["Website Design", "Brand Support", "Digital Strategy"],
     summary:
       "Website design and digital organization for a growing community-focused initiative.",
-    imageAlt: "Placeholder image for Rising Builders project",
+    imageAlt: "Rising Builders Foundation Inc. logo",
+    logo: { url: risingBuildersLogo.url, bg: "#003B7D" },
     clientOverview: placeholder,
     challenge: placeholder,
     goals: [placeholder, placeholder, placeholder],
