@@ -91,6 +91,7 @@ function CaseStudy() {
               <dl className="grid grid-cols-2 gap-y-5 gap-x-6 text-sm">
                 <MetaItem label="Client" value={project.client} />
                 <MetaItem label="Year" value={project.year} />
+                <MetaItem label="Status" value={project.status} className="col-span-2" />
                 <MetaItem label="Category" value={project.categoryLabel} className="col-span-2" />
                 <MetaItem label="Platform & tools" value={project.platforms.join(" · ")} className="col-span-2" />
               </dl>
@@ -102,8 +103,8 @@ function CaseStudy() {
             <DevicePlaceholder
               device="desktop"
               accent={project.accent}
-              label={`Featured mockup — ${project.name}`}
-              caption="Screenshot / mockup placeholder — replace in editor"
+              label={`Featured image for ${project.name}`}
+              caption={project.gallery[0]?.caption ?? "Add featured screenshot"}
               logo={project.logo}
               imageAlt={project.imageAlt}
               project={project}
@@ -128,7 +129,7 @@ function CaseStudy() {
               <Prose className="mt-3">{project.clientNeeded}</Prose>
             </div>
             <div>
-              <h3 className="eyebrow-olive">Raelyn's role</h3>
+              <h3 className="eyebrow-olive">My role</h3>
               <Prose className="mt-3">{project.role}</Prose>
             </div>
           </div>
@@ -174,9 +175,11 @@ function CaseStudy() {
               How I contributed
             </h2>
           </div>
-          <p className="text-sm text-charcoal/70 max-w-sm">
-            Scope varies by project — this is what was delivered here.
-          </p>
+          {project.servicesIntro && (
+            <p className="text-sm text-charcoal/70 max-w-sm">
+              {project.servicesIntro}
+            </p>
+          )}
         </div>
         <ul className="flex flex-wrap gap-2.5">
           {project.services.map((s) => (
@@ -188,6 +191,23 @@ function CaseStudy() {
             </li>
           ))}
         </ul>
+
+        {project.scope && project.scope.length > 0 && (
+          <div className="mt-14">
+            <span className="eyebrow">Project scope</span>
+            <h3 className="mt-3 text-2xl md:text-3xl text-olive leading-tight">
+              What was included
+            </h3>
+            <ul className="mt-6 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+              {project.scope.map((s, i) => (
+                <li key={i} className="flex gap-3 text-sm text-charcoal/85 leading-relaxed">
+                  <span className="pixel-num text-xs text-camel mt-1 shrink-0">·{String(i + 1).padStart(2, "0")}</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
 
       {/* 6. Process */}
@@ -196,23 +216,26 @@ function CaseStudy() {
           <div className="max-w-2xl">
             <span className="eyebrow">Process</span>
             <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
-              Design & development process
+              Design and development process
             </h2>
-            <p className="mt-4 text-charcoal/85">
-              Each engagement follows the stages that fit the work — nothing is added for the sake of it.
-            </p>
+            {project.processIntro && (
+              <p className="mt-4 text-charcoal/85">{project.processIntro}</p>
+            )}
           </div>
 
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {project.process.map((stage, i) => (
               <li
-                key={stage}
+                key={stage.name}
                 className="group relative border border-border bg-card p-6 transition-colors hover:border-camel"
               >
-                <span className="pixel-num text-xs text-camel">·0{i + 1}</span>
+                <span className="pixel-num text-xs text-camel">·{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-2 text-xl text-olive group-hover:text-camel transition-colors">
-                  {stage}
+                  {stage.name}
                 </h3>
+                <p className="mt-3 text-sm text-charcoal/80 leading-relaxed">
+                  {stage.description}
+                </p>
                 <span className="absolute right-6 top-6 h-2 w-2" style={{ background: "var(--color-camel)" }} />
               </li>
             ))}
@@ -228,7 +251,7 @@ function CaseStudy() {
             Selected screens
           </h2>
           <p className="mt-4 text-charcoal/80">
-            Final screenshots and mockups will replace these placeholders — each is captioned to show what the screen demonstrates.
+            Each caption describes the image that will live here once final assets are uploaded.
           </p>
         </div>
 
@@ -245,7 +268,7 @@ function CaseStudy() {
           <div className="max-w-2xl">
             <span className="eyebrow">Key features</span>
             <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
-              What the site does
+              Deliverables and highlights
             </h2>
           </div>
 
@@ -266,6 +289,29 @@ function CaseStudy() {
         </div>
       </section>
 
+      {/* 8b. Verified metrics (only when supplied) */}
+      {project.metrics && project.metrics.length > 0 && (
+        <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
+          <div className="max-w-2xl">
+            <span className="eyebrow">Measurable results</span>
+            <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
+              What has been recorded so far
+            </h2>
+          </div>
+          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+            {project.metrics.map((m, i) => (
+              <li
+                key={i}
+                className="border border-border bg-card p-6 flex gap-4"
+              >
+                <span className="pixel-num text-xs text-camel mt-1 shrink-0">·{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-charcoal/85 leading-relaxed">{m}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {/* 9. Outcome */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28 text-center">
         <span className="eyebrow">Outcome</span>
@@ -285,6 +331,30 @@ function CaseStudy() {
           </a>
         )}
       </section>
+
+      {/* 9b. Skills demonstrated */}
+      {project.skills && project.skills.length > 0 && (
+        <section className="bg-cream border-y border-border">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
+            <div className="max-w-2xl">
+              <span className="eyebrow">Skills demonstrated</span>
+              <h2 className="mt-3 text-3xl md:text-4xl text-olive leading-tight">
+                What this project shows I can do
+              </h2>
+            </div>
+            <ul className="mt-8 flex flex-wrap gap-2.5">
+              {project.skills.map((s) => (
+                <li
+                  key={s}
+                  className="px-4 py-2 border border-border text-sm text-charcoal/85 bg-card"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* 10. Next project */}
       <section className="relative bg-olive text-cream border-y border-olive">
@@ -408,7 +478,7 @@ function DevicePlaceholder({
     <div
       className={`group relative ${maxW}`}
       role="img"
-      aria-label={`${label} — placeholder`}
+      aria-label={label}
     >
       <div
         className={`relative overflow-hidden border border-border bg-card ${radius} shadow-sm transition-shadow group-hover:shadow-lg`}
@@ -436,14 +506,14 @@ function DevicePlaceholder({
         </div>
       </div>
 
-      {/* Placeholder label ribbon */}
+      {/* Image-to-add ribbon */}
       <span className="absolute right-3 top-3 px-2 py-0.5 text-[10px] tracking-wider uppercase bg-cream border border-border text-charcoal/70">
-        Placeholder
+        Image
       </span>
 
       {/* Screen-reader only fallback */}
       <span className="sr-only">
-        {caption}. {imageAlt}. Final image pending. Accent theme: {accent}.
+        {caption}. {imageAlt}.
       </span>
     </div>
   );
