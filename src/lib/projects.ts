@@ -7,6 +7,7 @@ export type Category = "Websites" | "Branding" | "Social Media" | "Strategy";
 import vipBarberLogo from "@/assets/logos/vip-barber-lounge.jpg.asset.json";
 import rootedLabLogo from "@/assets/logos/rooted-lab-co.png.asset.json";
 import kimballRidgeLogo from "@/assets/logos/kimball-ridge.png.asset.json";
+import risingBuildersLogo from "@/assets/logos/rising-builders.jpg.asset.json";
 
 export interface Project {
   slug: string;
