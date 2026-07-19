@@ -32,7 +32,7 @@ export const Route = createFileRoute("/work/$slug")({
 
 function NotFound() {
   return (
-    <section className="mx-auto max-w-3xl px-6 py-32">
+    <section className="mx-auto max-w-3xl px-4 sm:px-6 py-32">
       <span className="eyebrow">404 · Project</span>
       <h1 className="mt-4 text-4xl">Project not found.</h1>
       <Link to="/work" className="btn-ghost mt-6">Back to work</Link>
@@ -46,7 +46,7 @@ function CaseStudy() {
   return (
     <>
       <section className="relative border-b border-border">
-        <div className="mx-auto max-w-7xl px-6 pt-16 pb-10 lg:px-10 lg:pt-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 pb-10 lg:px-10 lg:pt-24">
           <Link to="/work" className="text-sm text-charcoal/70 hover:text-camel transition-colors">
             ← All work
           </Link>
@@ -81,7 +81,7 @@ function CaseStudy() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <span className="eyebrow">Case study</span>
@@ -137,7 +137,7 @@ function CaseStudy() {
 
       {/* Next project */}
       <section className="relative bg-sage-light/50 border-y border-border">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <span className="eyebrow">Next project</span>
@@ -157,7 +157,7 @@ function CaseStudy() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 py-20 text-center">
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 py-20 text-center">
         <h3 className="text-3xl md:text-4xl leading-tight">
           Have a project you'd like to talk about?
         </h3>

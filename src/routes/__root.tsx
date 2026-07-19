@@ -19,7 +19,7 @@ function NotFoundComponent() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-start justify-center px-6 py-24">
+      <main className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-start justify-center px-4 sm:px-6 py-24">
         <span className="eyebrow mb-6">Error · 404</span>
         <p className="pixel-num text-6xl mb-4">404</p>
         <h1 className="text-4xl sm:text-5xl leading-tight">This page has wandered off.</h1>

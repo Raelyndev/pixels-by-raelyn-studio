@@ -45,7 +45,7 @@ function AboutPage() {
     <>
       <section className="relative border-b border-border">
         <div className="watercolor right-[-140px] top-[-100px] h-[500px] w-[500px]" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 lg:px-10 lg:pt-28 lg:pb-24">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-16 lg:px-10 lg:pt-28 lg:pb-24">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-start">
             <div className="lg:col-span-7">
               <span className="eyebrow">About · Raelyn Brown</span>
@@ -97,7 +97,7 @@ function AboutPage() {
 
       {/* Approach */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <span className="eyebrow">My approach</span>
@@ -133,7 +133,7 @@ function AboutPage() {
 
       {/* Capabilities */}
       <section className="relative bg-sage-light/40 border-y border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
               <span className="eyebrow">Capabilities</span>
@@ -167,7 +167,7 @@ function AboutPage() {
       </section>
 
       <section className="relative">
-        <div className="mx-auto max-w-5xl px-6 py-20 lg:px-10 text-center">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-20 lg:px-10 text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl leading-tight">
             Let's design something that feels like{" "}
             <span className="serif-italic text-camel">your business.</span>
