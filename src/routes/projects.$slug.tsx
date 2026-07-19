@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, ArrowLeft, ExternalLink } from "lucide-react";
-import { getNextProject, getProject, type GalleryItem } from "@/lib/projects";
+import { getNextProject, getProject, type GalleryItem, type Project } from "@/lib/projects";
 import { ProjectVisual } from "@/components/site/ProjectVisual";
 
 export const Route = createFileRoute("/projects/$slug")({
