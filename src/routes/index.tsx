@@ -199,7 +199,7 @@ function Home() {
               return (
                 <article key={p.slug} className="grid gap-8 md:gap-12 md:grid-cols-12 items-center">
                   <div className={`md:col-span-7 ${reverse ? "md:order-2" : ""}`}>
-                    <Link to="/work/$slug" params={{ slug: p.slug }} className="block group">
+                    <Link to="/projects/$slug" params={{ slug: p.slug }} className="block group">
                       <div className="overflow-hidden">
                         <div className="transition-transform duration-700 group-hover:scale-[1.02]">
                           <ProjectVisual project={p} variant={i === 0 ? "landscape" : i === 2 ? "landscape" : "landscape"} />
@@ -225,7 +225,7 @@ function Home() {
                       ))}
                     </ul>
                     <Link
-                      to="/work/$slug"
+                      to="/projects/$slug"
                       params={{ slug: p.slug }}
                       className="mt-6 inline-flex items-center gap-2 text-camel hover:text-camel-deep transition-colors"
                     >

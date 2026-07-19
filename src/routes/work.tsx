@@ -87,7 +87,7 @@ function WorkPage() {
               return (
                 <Link
                   key={p.slug}
-                  to="/work/$slug"
+                  to="/projects/$slug"
                   params={{ slug: p.slug }}
                   className={`group block ${wide ? "md:col-span-2" : ""}`}
                 >
