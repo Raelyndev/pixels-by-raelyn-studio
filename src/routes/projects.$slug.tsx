@@ -91,6 +91,7 @@ function CaseStudy() {
               <dl className="grid grid-cols-2 gap-y-5 gap-x-6 text-sm">
                 <MetaItem label="Client" value={project.client} />
                 <MetaItem label="Year" value={project.year} />
+                <MetaItem label="Status" value={project.status} className="col-span-2" />
                 <MetaItem label="Category" value={project.categoryLabel} className="col-span-2" />
                 <MetaItem label="Platform & tools" value={project.platforms.join(" · ")} className="col-span-2" />
               </dl>
@@ -102,8 +103,8 @@ function CaseStudy() {
             <DevicePlaceholder
               device="desktop"
               accent={project.accent}
-              label={`Featured mockup — ${project.name}`}
-              caption="Screenshot / mockup placeholder — replace in editor"
+              label={`Featured image for ${project.name}`}
+              caption={project.gallery[0]?.caption ?? "Add featured screenshot"}
               logo={project.logo}
               imageAlt={project.imageAlt}
               project={project}
