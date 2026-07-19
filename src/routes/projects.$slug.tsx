@@ -478,7 +478,7 @@ function DevicePlaceholder({
     <div
       className={`group relative ${maxW}`}
       role="img"
-      aria-label={`${label} — placeholder`}
+      aria-label={label}
     >
       <div
         className={`relative overflow-hidden border border-border bg-card ${radius} shadow-sm transition-shadow group-hover:shadow-lg`}
