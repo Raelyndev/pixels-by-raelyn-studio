@@ -506,14 +506,14 @@ function DevicePlaceholder({
         </div>
       </div>
 
-      {/* Placeholder label ribbon */}
+      {/* Image-to-add ribbon */}
       <span className="absolute right-3 top-3 px-2 py-0.5 text-[10px] tracking-wider uppercase bg-cream border border-border text-charcoal/70">
-        Placeholder
+        Image
       </span>
 
       {/* Screen-reader only fallback */}
       <span className="sr-only">
-        {caption}. {imageAlt}. Final image pending. Accent theme: {accent}.
+        {caption}. {imageAlt}.
       </span>
     </div>
   );
