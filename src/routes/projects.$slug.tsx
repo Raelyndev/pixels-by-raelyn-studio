@@ -47,7 +47,7 @@ function NotFound() {
 }
 
 function CaseStudy() {
-  const { project, next } = Route.useLoaderData();
+  const { project, next } = Route.useLoaderData() as { project: Project; next: Project };
 
   return (
     <div className="animate-fade-in">
