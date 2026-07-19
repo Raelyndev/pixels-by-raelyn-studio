@@ -107,7 +107,7 @@ function ServicesPage() {
     <>
       <section className="relative border-b border-border">
         <div className="watercolor right-[-160px] top-[-100px] h-[500px] w-[500px]" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 lg:px-10 lg:pt-28 lg:pb-24">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-16 lg:px-10 lg:pt-28 lg:pb-24">
           <span className="eyebrow">Services · Custom to each business</span>
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
             Creative services built around what your business{" "}
@@ -121,7 +121,7 @@ function ServicesPage() {
       </section>
 
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           {groups.map((g, i) => {
             const reverse = i % 2 === 1;
             return (
@@ -162,7 +162,7 @@ function ServicesPage() {
 
       {/* "Not sure" section */}
       <section className="relative bg-sage-light/50 border-t border-border">
-        <div className="mx-auto max-w-5xl px-6 py-20 lg:px-10 lg:py-28 text-center">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28 text-center">
           <span className="eyebrow">Not sure where to begin?</span>
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight">
             Not sure where to start?{" "}

@@ -64,7 +64,7 @@ function Home() {
       <section className="relative overflow-hidden">
         <div className="watercolor left-[-140px] top-[-80px] h-[520px] w-[520px]" aria-hidden />
         <div className="watercolor right-[-120px] top-[220px] h-[380px] w-[380px]" aria-hidden />
-        <div className="mx-auto max-w-7xl px-6 pt-14 pb-24 lg:px-10 lg:pt-24 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-14 pb-24 lg:px-10 lg:pt-24 lg:pb-32">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-10 items-end">
             <div className="lg:col-span-7 relative">
               <span className="eyebrow mb-6">
@@ -118,7 +118,7 @@ function Home() {
 
       {/* INTRO */}
       <section className="relative border-t border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <span className="eyebrow">Design with direction</span>
@@ -141,7 +141,7 @@ function Home() {
 
       {/* SERVICES PREVIEW — editorial numbered list */}
       <section className="relative bg-[color-mix(in_oklab,var(--cream-warm)_60%,var(--cream))] border-y border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <span className="eyebrow">02 · Services</span>
@@ -181,7 +181,7 @@ function Home() {
 
       {/* FEATURED WORK */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="flex items-end justify-between gap-6 mb-14">
             <div>
               <span className="eyebrow">03 · Selected work</span>
@@ -242,7 +242,7 @@ function Home() {
       {/* PROCESS */}
       <section className="relative bg-sage-light/40 border-y border-border">
         <div className="watercolor left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[560px] w-[720px] opacity-70" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="max-w-3xl">
             <span className="eyebrow">04 · Process</span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight">
@@ -268,7 +268,7 @@ function Home() {
 
       {/* WHY */}
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <span className="eyebrow">05 · Why work with me</span>
@@ -303,7 +303,7 @@ function Home() {
 
       {/* TESTIMONIALS placeholder */}
       <section className="relative bg-cream border-y border-border">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 lg:px-10 lg:py-24">
           <div className="max-w-3xl">
             <span className="eyebrow">06 · Testimonials</span>
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight">
@@ -333,7 +333,7 @@ function Home() {
           backgroundImage: "radial-gradient(rgba(245,243,234,0.9) 1px, transparent 1px)",
           backgroundSize: "8px 8px",
         }} />
-        <div className="relative mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-32 text-center">
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-24 lg:px-10 lg:py-32 text-center">
           <span className="font-pixel text-[0.72rem] tracking-[0.18em] uppercase text-camel">Let's build together</span>
           <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-cream">
             Ready to create a digital presence that feels{" "}

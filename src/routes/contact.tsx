@@ -87,7 +87,7 @@ function ContactPage() {
     <>
       <section className="relative border-b border-border">
         <div className="watercolor left-[-140px] top-[-100px] h-[500px] w-[500px]" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-14 lg:px-10 lg:pt-28 lg:pb-20">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-14 lg:px-10 lg:pt-28 lg:pb-20">
           <span className="eyebrow">Contact · Start a project</span>
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
             Let's talk about{" "}
@@ -101,7 +101,7 @@ function ContactPage() {
       </section>
 
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 lg:px-10 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-12">
             {/* Aside */}
             <aside className="lg:col-span-4 space-y-8">

@@ -35,7 +35,7 @@ export function SiteHeader() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 py-4 lg:px-10">
         <Link to="/" className="flex items-center gap-3" aria-label="Pixels by Raelyn home">
           <img
             src={logoAsset.url}

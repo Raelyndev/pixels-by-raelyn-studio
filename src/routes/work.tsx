@@ -36,7 +36,7 @@ function WorkPage() {
     <>
       <section className="relative border-b border-border">
         <div className="watercolor left-[-140px] top-[-100px] h-[500px] w-[500px]" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-14 lg:px-10 lg:pt-28 lg:pb-20">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-14 lg:px-10 lg:pt-28 lg:pb-20">
           <span className="eyebrow">Work · Selected projects</span>
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] max-w-4xl">
             Selected work and{" "}
@@ -50,7 +50,7 @@ function WorkPage() {
       </section>
 
       <section className="relative">
-        <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-14 lg:px-10 lg:py-20">
           {/* Filter tabs */}
           <div
             role="tablist"
@@ -117,7 +117,7 @@ function WorkPage() {
       </section>
 
       <section className="relative bg-cream border-t border-border">
-        <div className="mx-auto max-w-4xl px-6 py-20 lg:px-10 text-center">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 py-20 lg:px-10 text-center">
           <span className="eyebrow">Have a project in mind?</span>
           <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl leading-tight">
             Let's design something{" "}
