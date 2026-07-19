@@ -251,7 +251,7 @@ function CaseStudy() {
             Selected screens
           </h2>
           <p className="mt-4 text-charcoal/80">
-            Final screenshots and mockups will replace these placeholders — each is captioned to show what the screen demonstrates.
+            Each caption describes the image that will live here once final assets are uploaded.
           </p>
         </div>
 
