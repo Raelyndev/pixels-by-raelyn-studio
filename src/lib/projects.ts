@@ -4,6 +4,10 @@
 
 export type Category = "Websites" | "Branding" | "Social Media" | "Strategy";
 
+import vipBarberLogo from "@/assets/logos/vip-barber-lounge.jpg.asset.json";
+import rootedLabLogo from "@/assets/logos/rooted-lab-co.png.asset.json";
+import kimballRidgeLogo from "@/assets/logos/kimball-ridge.png.asset.json";
+
 export interface Project {
   slug: string;
   name: string;
@@ -12,6 +16,7 @@ export interface Project {
   services: string[];
   summary: string;
   imageAlt: string;
+  logo?: { url: string; bg?: string };
   // Case study fields
   clientOverview: string;
   challenge: string;
