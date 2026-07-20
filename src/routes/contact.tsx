@@ -95,7 +95,7 @@ function ContactPage() {
         data.timeline ? `Desired Timeline: ${data.timeline}` : "",
         data.referral ? `How I heard about you: ${data.referral}` : "",
         ``,
-        `Project Description:`
+        `Project Description:`,
         ``,
         data.description,
         ``,
