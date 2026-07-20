@@ -77,8 +77,34 @@ function ContactPage() {
       return;
     }
     setSubmitting(true);
-    // Placeholder — wire up to a form service, edge function, or database later.
-    await new Promise((r) => setTimeout(r, 700));
+
+    const data = parsed.data;
+    const subject = encodeURIComponent(`New project inquiry from ${data.name}`);
+    const body = encodeURIComponent(
+      [
+        `Hi Pixels by Raelyn,`,
+        ``,
+        `I'm reaching out about a new project. Here are the details:`,
+        ``,
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        data.business ? `Business/Organization: ${data.business}` : "",
+        data.link ? `Website/Social Link: ${data.link}` : "",
+        `Service Needed: ${data.service}`,
+        data.budget ? `Estimated Budget: ${data.budget}` : "",
+        data.timeline ? `Desired Timeline: ${data.timeline}` : "",
+        data.referral ? `How I heard about you: ${data.referral}` : "",
+        ``,
+        `Project Description:`,
+        ``,
+        data.description,
+        ``,
+        `Looking forward to hearing from you!`,
+        data.name,
+      ].filter(Boolean).join("\n"),
+    );
+
+    window.location.href = `mailto:Pixelsbyraelyn@gmail.com?subject=${subject}&body=${body}`;
     setSubmitting(false);
     setSubmitted(true);
   };
@@ -108,13 +134,13 @@ function ContactPage() {
               <div>
                 <span className="eyebrow-olive">Direct email</span>
                 <a
-                  href="mailto:hello@pixelsbyraelyn.com"
+                  href="mailto:Pixelsbyraelyn@gmail.com"
                   className="mt-3 flex items-center gap-2 text-lg text-olive hover:text-camel transition-colors"
                 >
-                  <Mail size={18} /> hello@pixelsbyraelyn.com
+                  <Mail size={18} /> Pixelsbyraelyn@gmail.com
                 </a>
                 <p className="mt-3 text-sm text-charcoal/70">
-                  Editable placeholder — replace with your preferred contact email.
+                  Prefer email? Send your project details directly and I'll reply within 2–3 business days.
                 </p>
               </div>
               <div>

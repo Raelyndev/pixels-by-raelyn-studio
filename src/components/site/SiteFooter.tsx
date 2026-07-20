@@ -44,8 +44,8 @@ export function SiteFooter() {
             <p className="eyebrow-olive mb-4">Connect</p>
             <ul className="space-y-3 text-charcoal/85">
               <li>
-                <a href="mailto:hello@pixelsbyraelyn.com" className="inline-flex items-center gap-2 hover:text-camel transition-colors">
-                  <Mail size={16} /> hello@pixelsbyraelyn.com
+                <a href="mailto:Pixelsbyraelyn@gmail.com" className="inline-flex items-center gap-2 hover:text-camel transition-colors">
+                  <Mail size={16} /> Pixelsbyraelyn@gmail.com
                 </a>
               </li>
               <li>
