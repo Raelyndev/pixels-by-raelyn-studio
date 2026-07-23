@@ -151,7 +151,6 @@ export const submitInquiry = createServerFn({ method: "POST" })
       {
         from: "Pixels by Raelyn <onboarding@resend.dev>",
         to: [OWNER_EMAIL],
-        reply_to: data.email,
         subject: `New Project Inquiry: ${data.name} | ${data.service}`,
         html: buildOwnerEmail(data),
       },
