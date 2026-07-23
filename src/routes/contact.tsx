@@ -66,8 +66,12 @@ function ContactPage() {
     if (errors[k]) setErrors((e) => ({ ...e, [k]: undefined }));
   };
 
+  const submit = useServerFn(submitInquiry);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError(null);
     const parsed = schema.safeParse(values);
     if (!parsed.success) {
       const errs: Partial<Record<keyof FormState, string>> = {};
@@ -79,51 +83,17 @@ function ContactPage() {
       return;
     }
     setSubmitting(true);
-
-    const data = parsed.data;
-    const subject = encodeURIComponent(
-      `New Project Inquiry: ${data.name} | ${data.service}`,
-    );
-
-    const divider = "----------------------------------------";
-    const line = (label: string, value?: string) =>
-      value && value.trim() ? `${label}: ${value}` : `${label}: Not provided`;
-
-    const body = encodeURIComponent(
-      [
-        "NEW PROJECT INQUIRY",
-        divider,
-        "",
-        "CONTACT INFORMATION",
-        divider,
-        line("Name", data.name),
-        line("Business/Organization", data.business),
-        line("Email", data.email),
-        "",
-        "PROJECT DETAILS",
-        divider,
-        line("Service Needed", data.service),
-        line("Current Website or Social Link", data.link),
-        line("Estimated Budget", data.budget),
-        line("Desired Timeline", data.timeline),
-        "",
-        "ABOUT THE PROJECT",
-        divider,
-        data.description,
-        "",
-        "ADDITIONAL INFORMATION",
-        divider,
-        line("How they heard about Pixels by Raelyn", data.referral),
-        "",
-        divider,
-        "Submitted through the Pixels by Raelyn project inquiry form",
-      ].join("\n"),
-    );
-
-    window.location.href = `mailto:Pixelsbyraelyn@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      await submit({ data: parsed.data });
+      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setSubmitError("Something went wrong sending your inquiry. Please try again or email Pixelsbyraelyn@gmail.com directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
 
   return (
     <>
