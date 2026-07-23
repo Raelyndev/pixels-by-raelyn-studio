@@ -99,6 +99,64 @@ function buildOwnerEmail(data: InquiryInput): string {
 </body></html>`;
 }
 
+function buildClientEmail(data: InquiryInput): string {
+  return `<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F5F3EA;font-family:'Helvetica Neue',Arial,sans-serif;color:#3F4335;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F5F3EA;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border:1px solid #ece7dc;">
+        <tr><td style="padding:36px 40px 20px;border-bottom:1px solid #ece7dc;text-align:center;">
+          <div style="font-family:Georgia,'Times New Roman',serif;font-size:24px;color:#3F4335;letter-spacing:0.02em;">Pixels <em style="color:#B48A50;font-style:italic;">by Raelyn</em></div>
+        </td></tr>
+
+        <tr><td style="padding:36px 40px 8px;">
+          <div style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#7E8062;margin-bottom:10px;">Inquiry Received</div>
+          <h1 style="margin:0 0 18px;font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:28px;line-height:1.25;color:#3F4335;">Thank you, ${escapeHtml(data.name)}.</h1>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.65;color:#3F4335;">Your project inquiry landed safely in my inbox, and I'm so glad you reached out. I read every message personally and will review the details you shared about <em style="color:#B48A50;">${escapeHtml(data.service)}</em> with care.</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.65;color:#3F4335;">You can expect a thoughtful reply within <strong>1&ndash;2 business days</strong>. If your timeline shifts or you'd like to add anything, feel free to reply directly to this email.</p>
+        </td></tr>
+
+        <tr><td style="padding:8px 40px 24px;">
+          <div style="background:#F5F3EA;border-left:3px solid #B48A50;padding:18px 22px;color:#3F4335;font-size:15px;line-height:1.6;">
+            In the meantime, take a look around the <a href="https://pixels-by-raelyn-studio.lovable.app/work" style="color:#7E8062;text-decoration:underline;">recent work</a> or revisit the <a href="https://pixels-by-raelyn-studio.lovable.app/services" style="color:#7E8062;text-decoration:underline;">services</a> to get a feel for how we might collaborate.
+          </div>
+        </td></tr>
+
+        <tr><td style="padding:8px 40px 36px;">
+          <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;color:#7E8062;">Warmly,<br/>Raelyn</p>
+        </td></tr>
+
+        <tr><td style="padding:20px 40px 32px;border-top:1px solid #ece7dc;text-align:center;font-size:12px;color:#7E8062;">
+          Pixels by Raelyn &middot; Pixelsbyraelyn@gmail.com
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+}
+
+async function sendEmail(payload: Record<string, unknown>, label: string): Promise<void> {
+  const lovableKey = process.env.LOVABLE_API_KEY;
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!lovableKey || !resendKey) return;
+
+  const res = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${lovableKey}`,
+      "X-Connection-Api-Key": resendKey,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    console.error(`[contact] ${label} email failed [${res.status}]: ${body}`);
+  }
+}
+
 export const submitInquiry = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => inquirySchema.parse(data))
   .handler(async ({ data }) => {
@@ -121,38 +179,33 @@ export const submitInquiry = createServerFn({ method: "POST" })
       throw new Error("Failed to save inquiry");
     }
 
-    const lovableKey = process.env.LOVABLE_API_KEY;
-    const resendKey = process.env.RESEND_API_KEY;
-
-    if (!lovableKey || !resendKey) {
+    if (!process.env.LOVABLE_API_KEY || !process.env.RESEND_API_KEY) {
       console.error("[contact] missing email credentials");
-      // Submission is saved; surface success to user.
       return { ok: true };
     }
 
-    const html = buildOwnerEmail(data);
-
-    const res = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${lovableKey}`,
-        "X-Connection-Api-Key": resendKey,
-      },
-      body: JSON.stringify({
-        from: "Pixels by Raelyn <onboarding@resend.dev>",
-        to: [OWNER_EMAIL],
-        reply_to: data.email,
-        subject: `New Project Inquiry: ${data.name} | ${data.service}`,
-        html,
-      }),
-    });
-
-    if (!res.ok) {
-      const body = await res.text();
-      console.error(`[contact] resend failed [${res.status}]: ${body}`);
-      // Submission is saved; do not fail the user's experience.
-    }
+    await Promise.all([
+      sendEmail(
+        {
+          from: "Pixels by Raelyn <onboarding@resend.dev>",
+          to: [OWNER_EMAIL],
+          reply_to: data.email,
+          subject: `New Project Inquiry: ${data.name} | ${data.service}`,
+          html: buildOwnerEmail(data),
+        },
+        "owner",
+      ),
+      sendEmail(
+        {
+          from: "Pixels by Raelyn <onboarding@resend.dev>",
+          to: [data.email],
+          reply_to: OWNER_EMAIL,
+          subject: "Thank you for reaching out to Pixels by Raelyn",
+          html: buildClientEmail(data),
+        },
+        "client",
+      ),
+    ]);
 
     return { ok: true };
   });
