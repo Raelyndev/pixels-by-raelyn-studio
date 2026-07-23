@@ -228,6 +228,13 @@ function ContactPage() {
                     />
                   </Field>
 
+                  {submitError && (
+                    <p role="alert" className="text-sm text-camel-deep border border-camel/40 bg-camel/5 px-4 py-3">
+                      {submitError}
+                    </p>
+                  )}
+
+
                   <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-2">
                     <p className="text-xs text-charcoal/60 max-w-md">
                       Your details are only used to respond to your inquiry.
