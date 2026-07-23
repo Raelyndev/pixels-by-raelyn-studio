@@ -147,28 +147,16 @@ export const submitInquiry = createServerFn({ method: "POST" })
       return { ok: true };
     }
 
-    await Promise.all([
-      sendEmail(
-        {
-          from: "Pixels by Raelyn <onboarding@resend.dev>",
-          to: [OWNER_EMAIL],
-          reply_to: data.email,
-          subject: `New Project Inquiry: ${data.name} | ${data.service}`,
-          html: buildOwnerEmail(data),
-        },
-        "owner",
-      ),
-      sendEmail(
-        {
-          from: "Pixels by Raelyn <onboarding@resend.dev>",
-          to: [data.email],
-          reply_to: OWNER_EMAIL,
-          subject: "Thank you for reaching out to Pixels by Raelyn",
-          html: buildClientEmail(data),
-        },
-        "client",
-      ),
-    ]);
+    await sendEmail(
+      {
+        from: "Pixels by Raelyn <onboarding@resend.dev>",
+        to: [OWNER_EMAIL],
+        reply_to: data.email,
+        subject: `New Project Inquiry: ${data.name} | ${data.service}`,
+        html: buildOwnerEmail(data),
+      },
+      "owner",
+    );
 
     return { ok: true };
   });
