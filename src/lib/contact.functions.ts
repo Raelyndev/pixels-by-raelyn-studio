@@ -15,7 +15,7 @@ const inquirySchema = z.object({
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
 
-const OWNER_EMAIL = "Pixelsbyraelyn@gmail.com";
+const OWNER_EMAIL = "pixelsbyraelyn@gmail.com";
 
 function escapeHtml(value: string): string {
   return value
@@ -114,9 +114,11 @@ async function sendEmail(payload: Record<string, unknown>, label: string): Promi
     body: JSON.stringify(payload),
   });
 
+  const body = await res.text();
   if (!res.ok) {
-    const body = await res.text();
     console.error(`[contact] ${label} email failed [${res.status}]: ${body}`);
+  } else {
+    console.log(`[contact] ${label} email sent: ${body}`);
   }
 }
 
