@@ -151,8 +151,9 @@ export const submitInquiry = createServerFn({ method: "POST" })
 
     await sendEmail(
       {
-        from: "Pixels by Raelyn <onboarding@resend.dev>",
+        from: "Pixels by Raelyn <inquiries@raelynbrown.dev>",
         to: [OWNER_EMAIL],
+        reply_to: data.email,
         subject: `New Project Inquiry: ${data.name} | ${data.service}`,
         html: buildOwnerEmail(data),
       },
