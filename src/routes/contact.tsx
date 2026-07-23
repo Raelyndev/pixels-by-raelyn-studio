@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
 import { CheckCircle2, Instagram, Linkedin, Mail } from "lucide-react";
 import { z } from "zod";
+import { submitInquiry } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
