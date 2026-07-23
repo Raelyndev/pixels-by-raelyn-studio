@@ -15,7 +15,7 @@ const inquirySchema = z.object({
 
 export type InquiryInput = z.infer<typeof inquirySchema>;
 
-const OWNER_EMAIL = "Pixelsbyraelyn@gmail.com";
+const OWNER_EMAIL = "pixelsbyraelyn@gmail.com";
 
 function escapeHtml(value: string): string {
   return value
